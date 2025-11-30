@@ -70,7 +70,7 @@ const CompactFieldWrapper: React.FC<{ label: string; children: React.ReactNode; 
 const DynamicTable: React.FC<{ title: string; children: React.ReactNode; onAdd: () => void; addLabel: string; }> = ({ title, children, onAdd, addLabel }) => (
     <div>
         {title && <h3 className="text-lg font-medium text-slate-700 mb-3">{title}</h3>}
-        <div className="overflow-auto max-h-28 rounded-lg border border-slate-200">{children}</div>
+        <div className="overflow-auto max-h-60 rounded-lg border border-slate-200">{children}</div>
         <button type="button" onClick={onAdd} className="mt-3 flex items-center text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors">
             <PlusCircleIcon className="mr-2" /> {addLabel}
         </button>
@@ -350,7 +350,7 @@ const DossierFormPage: React.FC = () => {
     const reglementInputClass = "py-1 px-2 text-xs w-full min-w-[8rem]";
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-2 pb-24">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-2 pb-40">
             <div className="grid grid-cols-1 xl:grid-cols-3 gap-2">
                 {/* --- LEFT & MIDDLE COLUMNS --- */}
                 <div className="xl:col-span-2 space-y-2">
@@ -519,7 +519,7 @@ const DossierFormPage: React.FC = () => {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-2">
                 <div className="lg:col-span-1">
                     <FormSection title="T.E.U (Conteneurs)">
-                        <div className="max-h-28 overflow-y-auto pr-2 space-y-3">
+                        <div className="max-h-60 overflow-y-auto pr-2 space-y-3">
                             {teusFields.map((field, index) => (
                                 <div key={field.id} className="flex items-center space-x-2">
                                     <div className="flex-1">
@@ -593,7 +593,7 @@ const DossierFormPage: React.FC = () => {
                 </div>
             </div>
 
-            <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-t border-slate-200 p-4 flex justify-end space-x-4 shadow-lg">
+            <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-t border-slate-200 p-4 flex justify-end space-x-4 shadow-lg z-30">
                 <button
                     type="button"
                     onClick={handleCancel}

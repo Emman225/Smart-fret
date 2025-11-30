@@ -70,7 +70,7 @@ const CompactFieldWrapper: React.FC<{ label: string; children: React.ReactNode; 
 const DynamicTable: React.FC<{ title: string; children: React.ReactNode; onAdd: () => void; addLabel: string; }> = ({ title, children, onAdd, addLabel }) => (
     <div>
         {title && <h3 className="text-lg font-medium text-slate-700 mb-3">{title}</h3>}
-        <div className="overflow-auto max-h-28 rounded-lg border border-slate-200">{children}</div>
+        <div className="overflow-auto max-h-60 rounded-lg border border-slate-200">{children}</div>
         <button type="button" onClick={onAdd} className="mt-3 flex items-center text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors">
             <PlusCircleIcon className="mr-2" /> {addLabel}
         </button>
@@ -442,36 +442,36 @@ const DossierFormPage: React.FC = () => {
         }
     };
 
-const CompactField: React.FC<{ register: UseFormRegister<Dossier>, label: string; name: string; type?: string; }> = ({ register, label, name, type = "text" }) => {
-    const props = type === 'number' ? { valueAsNumber: true } : {};
-    return (
-        <div className="grid grid-cols-3 items-center gap-2">
-            <label className="col-span-1 text-xs font-medium text-slate-500 text-right pr-2">{label}</label>
-            <div className="col-span-2">
-                <Input
-                    type={type}
-                    className="py-1 px-2 text-xs"
-                    {...register(name as any, props)}
-                />
+    const CompactField: React.FC<{ register: UseFormRegister<Dossier>, label: string; name: string; type?: string; }> = ({ register, label, name, type = "text" }) => {
+        const props = type === 'number' ? { valueAsNumber: true } : {};
+        return (
+            <div className="grid grid-cols-3 items-center gap-2">
+                <label className="col-span-1 text-xs font-medium text-slate-500 text-right pr-2">{label}</label>
+                <div className="col-span-2">
+                    <Input
+                        type={type}
+                        className="py-1 px-2 text-xs"
+                        {...register(name as any, props)}
+                    />
+                </div>
             </div>
-        </div>
-    );
-};
+        );
+    };
 
-const DetailAdminSubSection: React.FC<{ register: UseFormRegister<Dossier>, fieldName: keyof Pick<Dossier, 'aconnier' | 'fret' | 'transport' | 'change' | 'surestaire' | 'magasinage'>, title: string }> = ({ register, fieldName, title }) => {
-    return (
-        <div className="space-y-1.5">
-            <h3 className="text-sm font-semibold text-slate-700 mb-2 border-b border-slate-200 pb-1">{title}</h3>
-            <CompactField register={register} label="Nom" name={`${fieldName}.nom`} />
-            <CompactField register={register} label="N° Facture" name={`${fieldName}.numFacture`} />
-            <CompactField register={register} label="Date" name={`${fieldName}.date`} type="date" />
-            <CompactField register={register} label="N° C.C" name={`${fieldName}.numCC`} />
-            <CompactField register={register} label="Montant" name={`${fieldName}.montant`} type="number" />
-            <CompactField register={register} label="Mt taxable" name={`${fieldName}.montantTaxable`} type="number" />
-            <CompactField register={register} label="Mt T.V.A" name={`${fieldName}.montantTVA`} type="number" />
-        </div>
-    );
-};
+    const DetailAdminSubSection: React.FC<{ register: UseFormRegister<Dossier>, fieldName: keyof Pick<Dossier, 'aconnier' | 'fret' | 'transport' | 'change' | 'surestaire' | 'magasinage'>, title: string }> = ({ register, fieldName, title }) => {
+        return (
+            <div className="space-y-1.5">
+                <h3 className="text-sm font-semibold text-slate-700 mb-2 border-b border-slate-200 pb-1">{title}</h3>
+                <CompactField register={register} label="Nom" name={`${fieldName}.nom`} />
+                <CompactField register={register} label="N° Facture" name={`${fieldName}.numFacture`} />
+                <CompactField register={register} label="Date" name={`${fieldName}.date`} type="date" />
+                <CompactField register={register} label="N° C.C" name={`${fieldName}.numCC`} />
+                <CompactField register={register} label="Montant" name={`${fieldName}.montant`} type="number" />
+                <CompactField register={register} label="Mt taxable" name={`${fieldName}.montantTaxable`} type="number" />
+                <CompactField register={register} label="Mt T.V.A" name={`${fieldName}.montantTVA`} type="number" />
+            </div>
+        );
+    };
 
     const compactInputProps = { className: "py-1 px-2 text-xs" };
     const reglementInputClass = "py-1 px-2 text-xs w-full min-w-[8rem]";
@@ -566,7 +566,7 @@ const DetailAdminSubSection: React.FC<{ register: UseFormRegister<Dossier>, fiel
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-2 pb-24">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-2 pb-40">
             <div className="grid grid-cols-1 xl:grid-cols-3 gap-2">
                 <div className="xl:col-span-2 space-y-2">
                     <FormSection title="Dossier Livraison">
@@ -733,7 +733,7 @@ const DetailAdminSubSection: React.FC<{ register: UseFormRegister<Dossier>, fiel
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-2">
                 <div className="lg:col-span-1">
                     <FormSection title="T.E.U (Conteneurs)">
-                        <div className="max-h-28 overflow-y-auto pr-2 space-y-3">
+                        <div className="max-h-60 overflow-y-auto pr-2 space-y-3">
                             {teusFields.map((field, index) => (
                                 <div key={field.id} className="flex items-center space-x-2">
                                     <div className="w-full">
@@ -807,7 +807,7 @@ const DetailAdminSubSection: React.FC<{ register: UseFormRegister<Dossier>, fiel
                 </div>
             </div>
 
-            <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-t border-slate-200 p-4 flex justify-end space-x-4 shadow-lg">
+            <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-t border-slate-200 p-4 flex justify-end space-x-4 shadow-lg z-30">
                 <button
                     type="button"
                     onClick={handleCancel}
