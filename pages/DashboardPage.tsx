@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; 
 import { saveAs } from 'file-saver';
 import { useAuth, useOrigines } from '../context/AppContext';
 import useArmateurs from '../hooks/useArmateurs';
@@ -571,7 +571,7 @@ const DashboardPage: React.FC = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-          <h3 className="text-lg font-bold text-slate-800 mb-6">Répartition des origines</h3>
+          <h3 className="text-lg font-bold text-slate-800 mb-6">Répartition par origines</h3>
           {origineStats.length === 0 ? (
             <div className="text-center py-10 text-slate-500">Aucune donnée à afficher</div>
           ) : (
@@ -584,7 +584,7 @@ const DashboardPage: React.FC = () => {
           )}
         </div>
         <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-          <h3 className="text-lg font-bold text-slate-800 mb-6">Répartition des armateurs</h3>
+          <h3 className="text-lg font-bold text-slate-800 mb-6">Répartition par armateurs</h3>
           {armateurStats.length === 0 ? (
             <div className="text-center py-10 text-slate-500">Aucune donnée à afficher</div>
           ) : (
