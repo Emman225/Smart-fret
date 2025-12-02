@@ -70,7 +70,7 @@ const CompactFieldWrapper: React.FC<{ label: string; children: React.ReactNode; 
 const DynamicTable: React.FC<{ title: string; children: React.ReactNode; onAdd: () => void; addLabel: string; }> = ({ title, children, onAdd, addLabel }) => (
     <div>
         {title && <h3 className="text-lg font-medium text-slate-700 mb-3">{title}</h3>}
-        <div className="overflow-auto max-h-60 rounded-lg border border-slate-200">{children}</div>
+        <div className="overflow-auto max-h-48 rounded-lg border border-slate-200">{children}</div>
         <button type="button" onClick={onAdd} className="mt-3 flex items-center text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors">
             <PlusCircleIcon className="mr-2" /> {addLabel}
         </button>
@@ -474,7 +474,7 @@ const DossierFormPage: React.FC = () => {
     };
 
     const compactInputProps = { className: "py-1 px-2 text-xs" };
-    const reglementInputClass = "py-1 px-2 text-xs w-full min-w-[8rem]";
+    const reglementInputClass = "py-1 px-2 text-xs w-full";
 
     const renderOrigineOptions = () => {
         if (loadingOrigines) {
@@ -729,7 +729,7 @@ const DossierFormPage: React.FC = () => {
                     </FormSection>
                     <div className="mt-2">
                         <FormSection title="T.E.U (Conteneurs)">
-                            <div className="max-h-60 overflow-y-auto pr-2 space-y-3">
+                            <div className="max-h-48 overflow-y-auto pr-2 space-y-3">
                                 {teusFields.map((field, index) => (
                                     <div key={field.id} className="flex items-center space-x-2">
                                         <div className="w-full">
@@ -755,16 +755,16 @@ const DossierFormPage: React.FC = () => {
                     <DynamicTable title="" onAdd={() => appendReglement({ id: `${Date.now()}`, date: '', reference: '', modePaiement: 'Virement', banque: '', montantDevise: 0, devise: 'USD', coursDevise: 0, montantCFA: 0, montantTPS: 0, fraisBancaires: 0 })} addLabel="Ajouter un règlement">
                         <table className="min-w-full divide-y divide-slate-200 text-sm">
                             <thead className="sticky top-0 z-10 bg-slate-900 text-white"><tr className="text-left text-xs font-medium uppercase">
-                                <th className="px-2 py-1">Date</th>
-                                <th className="px-2 py-1">Réf.</th>
-                                <th className="px-2 py-1">Mode</th>
-                                <th className="px-2 py-1">Banque</th>
-                                <th className="px-2 py-1">Mt Devise</th>
-                                <th className="px-2 py-1">Devise</th>
-                                <th className="px-2 py-1">Cours</th>
-                                <th className="px-2 py-1">Mt CFA</th>
-                                <th className="px-2 py-1">Mt TPS</th>
-                                <th className="px-2 py-1">Frais Banc.</th>
+                                <th className="px-2 py-1 w-24">Date</th>
+                                <th className="px-2 py-1 w-28">Réf.</th>
+                                <th className="px-2 py-1 w-28">Mode</th>
+                                <th className="px-2 py-1 w-28">Banque</th>
+                                <th className="px-2 py-1 w-28">Mt Devise</th>
+                                <th className="px-2 py-1 w-20">Devise</th>
+                                <th className="px-2 py-1 w-20">Cours</th>
+                                <th className="px-2 py-1 w-28">Mt CFA</th>
+                                <th className="px-2 py-1 w-28">Mt TPS</th>
+                                <th className="px-2 py-1 w-28">Frais Banc.</th>
                                 <th className="w-12"></th>
                             </tr></thead>
                             <tbody className="bg-white divide-y divide-slate-200">
@@ -783,8 +783,8 @@ const DossierFormPage: React.FC = () => {
                                                 setValue(`reglements.${index}.montantCFA` as const, cfa, { shouldDirty: true });
                                             }
                                         })} /></td>
-                                        <td className="p-1"><Select className={reglementInputClass} {...register(`reglements.${index}.devise`)}><option>USD</option><option>EUR</option></Select></td>
-                                        <td className="p-1"><Input type="number" className={reglementInputClass} {...register(`reglements.${index}.coursDevise`, {
+                                        <td className="p-1 w-20"><Select className={reglementInputClass} {...register(`reglements.${index}.devise`)}><option>USD</option><option>EUR</option></Select></td>
+                                        <td className="p-1 w-20"><Input type="number" className={reglementInputClass} {...register(`reglements.${index}.coursDevise`, {
                                             valueAsNumber: true, onChange: (e) => {
                                                 const cd = (e.target as HTMLInputElement).valueAsNumber;
                                                 const mdRaw = getValues(`reglements.${index}.montantDevise` as const);

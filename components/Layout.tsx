@@ -254,7 +254,7 @@ const Sidebar: React.FC<{ isOpen: boolean; isCollapsed: boolean; }> = ({ isOpen,
 
                     {/* Section Traitement */}
                     <CollapsibleMenu
-                        label="Traitement"
+                        label="Les Etats"
                         icon={<DocumentReportIcon />}
                         paths={[
                             "/traitement/reglements",
