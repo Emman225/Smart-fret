@@ -541,7 +541,7 @@ const DossierFormPage: React.FC = () => {
             </div>
 
             <div className="w-full mt-2">
-                <FormSection title="Règlements" className="pb-6">
+                <FormSection title="Règlements" className="pb-16">
                     <DynamicTable title="" onAdd={() => appendReglement({ id: createTempId('reglement'), date: '', reference: '', modePaiement: 'Virement', banque: '', montantDevise: 0, devise: 'USD', coursDevise: 0, montantCFA: 0, montantTPS: 0, fraisBancaires: 0 })} addLabel="Ajouter un règlement">
                         <table className="min-w-full divide-y divide-slate-200 text-sm">
                             <thead className="sticky top-0 z-10 bg-slate-900 text-white"><tr className="text-left text-xs font-medium uppercase">
