@@ -350,8 +350,8 @@ const DossierFormPage: React.FC = () => {
     const reglementInputClass = "py-1 px-2 text-xs w-full";
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-2 pb-40">
-            <div className="grid grid-cols-1 xl:grid-cols-3 gap-2">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-2 pb-40 w-full">
+            <div className="grid grid-cols-1 xl:grid-cols-3 gap-2 w-full">
                 {/* --- LEFT & MIDDLE COLUMNS --- */}
                 <div className="xl:col-span-2 space-y-2">
                     <FormSection title="Dossier Livraison">
@@ -387,7 +387,9 @@ const DossierFormPage: React.FC = () => {
                             <CompactFieldWrapper label="Quantité"><Input type="number" {...register('qte', { valueAsNumber: true })} {...compactInputProps} /></CompactFieldWrapper>
                             <CompactFieldWrapper label="Nombre T.E.U"><Input type="number" {...register('nbreTEU', { valueAsNumber: true })} {...compactInputProps} /></CompactFieldWrapper>
                         </div>
-                        <DynamicTable title="Items" onAdd={() => appendItem({ id: createTempId('item'), quantite: 0, designation: '', fob: 0 })} addLabel="Ajouter un item">
+                        <br />
+                        <br />
+                        <DynamicTable title="" onAdd={() => appendItem({ id: createTempId('item'), quantite: 0, designation: '', fob: 0 })} addLabel="Ajouter">
                             <table className="min-w-full divide-y divide-slate-200">
                                 <thead className="sticky top-0 z-10 bg-slate-900 text-white"><tr className="text-left text-xs font-medium uppercase">
                                     <th className="p-1">Quantité</th><th className="p-1">Désignation</th><th className="p-1">FOB</th><th className="w-12"></th>
@@ -409,6 +411,8 @@ const DossierFormPage: React.FC = () => {
                                 </tbody>
                             </table>
                         </DynamicTable>
+                        <br />
+                        <br />
 
                         <div className="mt-4 space-y-3">
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-3">
@@ -609,15 +613,17 @@ const DossierFormPage: React.FC = () => {
                     <span>{loading ? 'Création en cours…' : 'Créer le dossier'}</span>
                 </button>
             </div>
-            {loading && (
-                <div className="fixed inset-0 z-50 bg-black/30 flex items-center justify-center">
-                    <div className="bg-white rounded-lg px-4 py-3 flex items-center space-x-3 shadow-xl">
-                        <RefreshIcon className="w-5 h-5 animate-spin text-primary" />
-                        <span className="text-slate-700 text-sm">Création du dossier en cours…</span>
+            {
+                loading && (
+                    <div className="fixed inset-0 z-50 bg-black/30 flex items-center justify-center">
+                        <div className="bg-white rounded-lg px-4 py-3 flex items-center space-x-3 shadow-xl">
+                            <RefreshIcon className="w-5 h-5 animate-spin text-primary" />
+                            <span className="text-slate-700 text-sm">Création du dossier en cours…</span>
+                        </div>
                     </div>
-                </div>
-            )}
-        </form>
+                )
+            }
+        </form >
     );
 };
 

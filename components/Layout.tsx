@@ -409,7 +409,7 @@ const Layout: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
                     }
                 }} />
                 <main className="flex-1 overflow-x-hidden overflow-y-auto p-4 md:p-8 scroll-smooth">
-                    <div className="max-w-7xl mx-auto animate-fade-in">
+                    <div className="w-full mx-auto animate-fade-in">
                         {/* Utilisation d'Outlet pour les routes imbriquées */}
                         {children || <Outlet />}
                     </div>

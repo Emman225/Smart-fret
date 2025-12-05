@@ -602,7 +602,9 @@ const DossierFormPage: React.FC = () => {
                             <CompactFieldWrapper label="Quantité"><Input type="number" {...register('qte', { valueAsNumber: true })} {...compactInputProps} /></CompactFieldWrapper>
                             <CompactFieldWrapper label="Nombre T.E.U"><Input type="number" {...register('nbreTEU', { valueAsNumber: true })} {...compactInputProps} /></CompactFieldWrapper>
                         </div>
-                        <DynamicTable title="Items" onAdd={() => appendItem({ id: `${Date.now()}`, quantite: 0, designation: '', fob: 0 })} addLabel="Ajouter un item">
+                        <br />
+                        <br />
+                        <DynamicTable title="" onAdd={() => appendItem({ id: `${Date.now()}`, quantite: 0, designation: '', fob: 0 })} addLabel="Ajouter">
                             <table className="min-w-full divide-y divide-slate-200">
                                 <thead className="sticky top-0 z-10 bg-slate-900 text-white"><tr className="text-left text-xs font-medium uppercase">
                                     <th className="p-1">Quantité</th><th className="p-1">Désignation</th><th className="p-1">FOB</th><th className="w-12"></th>
@@ -624,6 +626,8 @@ const DossierFormPage: React.FC = () => {
                                 </tbody>
                             </table>
                         </DynamicTable>
+                        <br />
+                        <br />
 
                         <div className="mt-4 space-y-3">
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-3">
